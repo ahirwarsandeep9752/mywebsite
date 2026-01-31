@@ -88,8 +88,16 @@ def register():
 
 # ---------- AI TOOL PAGE ----------
 
-@app.route("/hook")
+@app.route("/hook", methods=["GET", "POST"])
 def hook():
+    if request.method == "POST":
+        topic = request.form["topic"]
+        tone = request.form["tone"]
+
+        fake_hook = f"This is a {tone} hook about {topic}"
+
+        return render_template("hook.html", result=fake_hook)
+
     return render_template("hook.html")
 
 
