@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upgrade to Pro</title>
+</head>
+<body>
+
+<h2>Upgrade to PRO</h2>
+<p>Price: ₹199 (One time)</p>
+
+<button id="pay-btn">Pay Now</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{ key }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "AI SaaS",
+    "description": "Pro Upgrade",
+    "order_id": "{{ order_id }}",
+    "handler": function (response){
+        fetch("/payment_success", {
+            method: "POST",
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            body: "razorpay_payment_id=" + response.razorpay_payment_id
+        })
+        .then(res => res.text())
+        .then(data => alert(data));
+    }
+};
+
+var rzp = new Razorpay(options);
+document.getElementById("pay-btn").onclick = function(){
+    rzp.open();
+};
+</script>
+
+<br><br>
+<a href="/dashboard">Back</a>
+
+</body>
+</html>

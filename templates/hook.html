@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reel Hook Generator</title>
+    <title>Hook Generator</title>
 </head>
 <body>
-    <h2>Instagram Reel Hook Generator</h2>
 
-    <form method="POST">
-        <input type="text" name="topic" placeholder="Enter your topic">
-        <br><br>
+<h2>AI Hook Generator</h2>
 
-        <select name="tone">
-            <option value="motivational">Motivational</option>
-            <option value="funny">Funny</option>
-            <option value="serious">Serious</option>
-        </select>
-        <br><br>
+<form method="POST">
 
-        <button type="submit">Generate Hook</button>
-    </form>
-    {% if result %}
-    <h3>Your Generated Hook:</h3>
-    <p>{{ result }}</p>
+    <input name="topic" placeholder="Enter topic" required><br><br>
+
+    <select name="tone">
+        <option value="motivational">Motivational</option>
+        <option value="funny">Funny</option>
+        <option value="emotional">Emotional</option>
+    </select><br><br>
+
+    <button type="submit">Generate</button>
+
+</form>
+
+{% if result %}
+<h3>Result:</h3>
+<p>{{ result }}</p>
 {% endif %}
+
+<a href="/dashboard">Back</a>
+
 </body>
 </html>

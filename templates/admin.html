@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - AI Hook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 60px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background: #020617;
+            color: #38bdf8;
+        }
+
+        tr:nth-child(even) {
+            background: #172554;
+        }
+
+        tr:hover {
+            background: #334155;
+        }
+
+        .status-pro {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .status-free {
+            color: #f97316;
+            font-weight: bold;
+        }
+
+        .top-link {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-link">
+    <a href="/dashboard">← Back to Dashboard</a>
+</div>
+
+<h1>Admin Panel – AI Hook</h1>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Status</th>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>
+            {% if user[2] == 1 %}
+                <span class="status-pro">PRO</span>
+            {% else %}
+                <span class="status-free">FREE</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="note">
+    Secure admin panel – only owner access.
+</div>
+
+</body>
+</html>

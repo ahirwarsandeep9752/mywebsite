@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Dashboard - AI Hook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 80px;
+        }
+
+        .box {
+            background: #1e293b;
+            max-width: 500px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 12px 30px;
+            margin: 10px;
+            font-size: 16px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Welcome {{ session["user"] }}</h1>
+    <p>Status: {% if pro %} PRO User {% else %} Free User {% endif %}</p>
+
+    <a href="/upgrade">
+        <button>Upgrade to Pro</button>
+    </a>
+
+    <a href="/hook">
+        <button>Generate Hooks</button>
+    </a>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
     <title>Dashboard</title>
 </head>
 <body>
 
-    <h1>Welcome to Dashboard 🎉</h1>
-    <p>Login ke baad hi ye page dikhta hai.</p>
+<h2>Welcome {{ session["user"] }}</h2>
 
-    <a href="/logout">Logout</a>
+{% if pro %}
+<p>Status: PRO User</p>
+{% else %}
+<p>Status: Free User</p>
+<a href="/upgrade">Upgrade to Pro</a>
+{% endif %}
+
+<br><br>
+<a href="/hook">Generate Hooks</a><br>
+<a href="/logout">Logout</a>
 
 </body>
 </html>
